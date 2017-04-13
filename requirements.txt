@@ -1,0 +1,10 @@
+Flask==0.12.1
+itsdangerous==0.24
+Jinja2==2.9.6
+MarkupSafe==1.0
+pysolr==3.6.0
+requests==2.13.0
+unity-lens-photos==1.0
+watson-developer-cloud==0.25.2
+Werkzeug==0.12.1
+
