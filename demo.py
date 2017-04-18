@@ -23,7 +23,7 @@ def retrieve(question, topic):
         password=credentials['credentials']['password'])
 
     solr_clusters = retrieve_and_rank.list_solr_clusters()
-    solr_cluster_id = solr_clusters['clusters'][1]['solr_cluster_id']
+    solr_cluster_id = 'sc0cbccce5_6f9c_41fa_86c5_1532f6a45e64'
 
     pysolr_client = retrieve_and_rank.get_pysolr_client(solr_cluster_id, topic)
     # Can also refer to config by name
@@ -62,7 +62,7 @@ def rank(question, topic):
         password=credentials['credentials']['password'])
 
     solr_clusters = retrieve_and_rank.list_solr_clusters()
-    solr_cluster_id = solr_clusters['clusters'][1]['solr_cluster_id']
+    solr_cluster_id = 'sc0cbccce5_6f9c_41fa_86c5_1532f6a45e64'
 
     ranker_id = '1eec74x28-rank-2104'
     results = retrieve_and_rank.rank(solr_cluster_id, ranker_id, topic, question)
