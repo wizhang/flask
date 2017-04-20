@@ -47,7 +47,7 @@ def rank(question, topic):
     #solr_cluster_id = solr_clusters['clusters'][1]['solr_cluster_id']
     #solr_cluster_id = 'scc3ecccbb_2901_4275_b4d7_11342899dca1'
     solr_cluster_id = 'sc0cbccce5_6f9c_41fa_86c5_1532f6a45e64'
-    ranker_id = '1eec74x28-rank-5332'
+    ranker_id = '1eec74x28-rank-2104'
     results = retrieve_and_rank.rank(solr_cluster_id, ranker_id, topic, question)
     return (retrieve_and_rank.removeCharTags(results[0]['body']), retrieve_and_rank.removeCharTags(results[0]['confidence']))
 
