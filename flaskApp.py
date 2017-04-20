@@ -31,27 +31,30 @@ def index_post():
 #	    f.truncate()
         with open('templates/temp/'+qname+'.html', 'w+') as f:
             f.seek(0)
-            f.write('<h4>Rank Data: </h4><br/><div style="width:100%;height:250px;line-height:3em;overflow:scroll;padding:5px;background-color:#FFFFFF;color:#B0A2AA;scrollbar-base-color:#EFEFEF;">')
-            t1,t2 = demo.get_rank(text, '90e7acx197-nlc-170')
-            f.write(t1.encode('utf-8'))
+            try:
+                f.write('<h4>Rank Data: </h4><br/><div style="width:100%;height:250px;line-height:3em;overflow:scroll;padding:5px;background-color:#FFFFFF;color:#B0A2AA;scrollbar-base-color:#EFEFEF;">')
+                t1,t2 = demo.get_rank(text, '90e7acx197-nlc-170')
+                f.write(t1.encode('utf-8'))
 
 #	    f.write(demo.get_rank(text, '90e7acx197-nlc-170').encode('utf-8'))
-            f.write('</div>')
-	    f.write('<div type="confidence-meter" id="confidence-meter" class = "confidence-meter" style="background-color: hsl(')
-            t2 = float(t2)*120
-            t2 = int(t2)
-            print 'My confidence is: '
-            print t2
-            t2 = str(t2)
-            f.write(t2)
-            f.write(', 75%, 48%)">')
-            f.write(t2)
-            f.write('</div>')
-            f.write('<h4>Retrieve Data: </h4><div style="width:100%;height:250px;line-height:3em;overflow:scroll;padding:5px;background-color:#FFFFFF;color:#B0A2AA;scrollbar-base-color:#EFEFEF;">')
-            f.write(demo.get_retrieve(text, '90e7acx197-nlc-170').encode('utf-8'))
-            f.write('</div>')
+                f.write('</div>')
+	        f.write('<div type="confidence-meter" id="confidence-meter" class = "confidence-meter" style="background-color: hsl(')
+                t2 = float(t2)*120
+                t2 = int(t2)
+                print 'My confidence is: '
+                print t2
+                t2 = str(t2)
+                f.write(t2)
+                f.write(', 75%, 48%)">')
+                f.write(t2)
+                f.write('</div>')
+                f.write('<h4>Retrieve Data: </h4><div style="width:100%;height:250px;line-height:3em;overflow:scroll;padding:5px;background-color:#FFFFFF;color:#B0A2AA;scrollbar-base-color:#EFEFEF;">')
+                f.write(demo.get_retrieve(text, '90e7acx197-nlc-170').encode('utf-8'))
+                f.write('</div>')
+            except:
+                f.write('<p>Sorry, I do not have an answer for that.</p>')
             f.truncate()
-        return render_template('index.html', answer='temp/'+qname+'.html', text = demo.get_rank(text, '90e7acx197-nlc-170'))
+        return render_template('index.html', answer='temp/'+qname+'.html', text = 'tmp')
 
 
 if __name__ == "__main__":

@@ -25,8 +25,8 @@ def retrieve(question, topic):
 
     #solr_clusters = retrieve_and_rank.list_solr_clusters()
     #solr_cluster_id = solr_clusters['clusters'][1]['solr_cluster_id']
-    solr_cluster_id = 'scc3ecccbb_2901_4275_b4d7_11342899dca1'
-
+    #solr_cluster_id = 'scc3ecccbb_2901_4275_b4d7_11342899dca1'
+    solr_cluster_id = 'sc0cbccce5_6f9c_41fa_86c5_1532f6a45e64'
     pysolr_client = retrieve_and_rank.get_pysolr_client(solr_cluster_id, topic)
     # Can also refer to config by name
 
@@ -45,8 +45,8 @@ def rank(question, topic):
 
     #solr_clusters = retrieve_and_rank.list_solr_clusters()
     #solr_cluster_id = solr_clusters['clusters'][1]['solr_cluster_id']
-    solr_cluster_id = 'scc3ecccbb_2901_4275_b4d7_11342899dca1'
-
+    #solr_cluster_id = 'scc3ecccbb_2901_4275_b4d7_11342899dca1'
+    solr_cluster_id = 'sc0cbccce5_6f9c_41fa_86c5_1532f6a45e64'
     ranker_id = '1eec74x28-rank-5332'
     results = retrieve_and_rank.rank(solr_cluster_id, ranker_id, topic, question)
     return (retrieve_and_rank.removeCharTags(results[0]['body']), retrieve_and_rank.removeCharTags(results[0]['confidence']))
@@ -54,19 +54,19 @@ def rank(question, topic):
 
 
 def get_topic(question, id):
-    #topic = classify(id, question)
-    topic = 'reddit_data'
+    topic = classify(id, question)
+    #topic = 'reddit_data'
     return topic
 
 def get_retrieve(question, id):
-    #topic = classify(id, question)
-    topic = 'reddit_data'
+    topic = classify(id, question)
+    #topic = 'reddit_data'
     answer = retrieve(question, topic).replace("\\n", "").replace("u'","").replace("answer':", "")
     return answer[4:]
 
 def get_rank(question, id):
-    #topic = classify(id, question)
-    topic = 'reddit_data'
+    topic = classify(id, question)
+    #topic = 'reddit_data'
     t1,t2 = rank(question, topic)
     t1.replace("\\n", "").replace("u'","").replace("answer':","")
     return t1, t2
